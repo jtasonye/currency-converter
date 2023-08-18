@@ -90,4 +90,4 @@ double dollarToNaira(double conversion){
     return(conversion * 768.48);
 }
 
-#endif CONVERTER_H_
+#endif // CONVERTER_H_
