@@ -1,6 +1,9 @@
-// Simple currency converter using C++
+/* main.cpp: Simple currency converter using C++
+ *
+ */
 
 #include <iostream>
+#include "converter.h"
 using std::cout;
 using std::cin;
 
@@ -11,8 +14,6 @@ int main(){
     double value;
     // Variables to hold conversion option
     int chf_convert, eur_convert, gbp_convert, ngn_convert, usd_convert;
-    // Variables to hold new value after conversion
-    double chf_value, eur_value , gbp_value, ngn_value, usd_value;
 
     bool continue_conversion = true;
 
@@ -22,7 +23,7 @@ int main(){
         cout << "\n\t What currency will you be starting with today: ";
         cout << "\n\t\t1. Swiss Franc (CHF)";
         cout << "\n\t\t2. European Euro (EUR)";
-        cout << "\n\t\t3. British Pound (GBP)";
+        cout << "\n\t\t3. British Pound Sterling (GBP)";
         cout << "\n\t\t4. Nigerian Naira (NGN)";
         cout << "\n\t\t5. US Dollar (USD)";
         cout << "\n\t Input a number from 1-5 here and press enter: ";
@@ -41,7 +42,7 @@ int main(){
                 cout << "\n\t What currency would you like to convert \u20A3" << value << " to :";
                 cout << "\n\t\t1. Swiss Franc (CHF)";
                 cout << "\n\t\t2. European Euro (EUR)";
-                cout << "\n\t\t3. British Pound (GBP)";
+                cout << "\n\t\t3. British Pound Sterling (GBP)";
                 cout << "\n\t\t4. Nigerian Naira (NGN)";
                 cout << "\n\t\t5. US Dollar (USD)";
                 cout << "\n\t Input a number from 1-5 here and press enter: ";
@@ -51,29 +52,20 @@ int main(){
                     cout << "\t Please enter a valid number: ";
                     cin >> chf_convert;
                 }
-                // Conversion from Franc to Franc
                 if(chf_convert == 1){
                     cout << "\t You cannot convert this currency to itself!";
                 }
-                // Conversion from Franc to Euro
                 else if(chf_convert == 2){
-                    chf_value = value * 1.023818;
-                    cout << "\t Your \u20A3" << value << " has been converted to \u20AC" << chf_value << " EUR";
+                    cout << "\t Your \u20A3" << value << " has been converted to \u20AC" << francToEuro(value) << " EUR";
                 }
-                // Conversion from Franc to Pound
                 else if(chf_convert == 3){
-                    chf_value = value * 0.879585;
-                    cout << "\t Your \u20A3" << value << " has been converted to \uFFE1" << chf_value << " GBP";
+                    cout << "\t Your \u20A3" << value << " has been converted to \uFFE1" << francToPound(value) << " GBP";
                 }
-                // Conversion from Franc to Naira
                 else if(chf_convert == 4){
-                    chf_value = value * 849.711575;
-                    cout << "\t Your \u20A3" << value << " has been converted to \u20A6" << chf_value << " NGN";
+                    cout << "\t Your \u20A3" << value << " has been converted to \u20A6" << francToNaira(value) << " NGN";
                 }
-                // Conversion from Franc to Dollar
                 else if(chf_convert == 5){
-                    chf_value = value * 1.117644;
-                    cout << "\t Your \u20A3" << value << " has been converted to \uFF04" << chf_value << " USD";
+                    cout << "\t Your \u20A3" << value << " has been converted to \uFF04" << francToDollar(value) << " USD";
                 }
                 break;
 
@@ -84,7 +76,7 @@ int main(){
                 cout << "\n\t What currency would you like to convert \u20AC" << value << " to :";
                 cout << "\n\t\t1. Swiss Franc (CHF)";
                 cout << "\n\t\t2. European Euro (EUR)";
-                cout << "\n\t\t3. British Pound (GBP)";
+                cout << "\n\t\t3. British Pound Sterling (GBP)";
                 cout << "\n\t\t4. Nigerian Naira (NGN)";
                 cout << "\n\t\t5. US Dollar (USD)";
                 cout << "\n\t Input a number from 1-5 here and press enter: ";
@@ -94,29 +86,20 @@ int main(){
                     cout << "\t Please enter a valid number: ";
                     cin >> eur_convert;
                 }
-                // Conversion from Euro to Franc
                 if(eur_convert == 1){
-                    eur_value = value * 0.976736;
-                    cout << "\t Your \u20AC" << value << " has been converted to \u20A3" << eur_value << " CHF";
+                    cout << "\t Your \u20AC" << value << " has been converted to \u20A3" << euroToFranc(value) << " CHF";
                 }
-                // Conversion from Euro to Euro
                 else if(eur_convert == 2){
                     cout << "\t You cannot convert this currency to itself!";
                 }
-                // Conversion from Euro to Pound
                 else if(eur_convert == 3){
-                    eur_value = value * 0.859122;
-                    cout << "\t Your \u20AC" << value << " has been converted to \uFFE1" << eur_value << " GBP";
+                    cout << "\t Your \u20AC" << value << " has been converted to \uFFE1" << euroToPound(value) << " GBP";
                 }
-                // Conversion from Euro to Naira
                 else if(eur_convert == 4){
-                    eur_value = value * 829.94378;
-                    cout << "\t Your \u20AC" << value << " has been converted to \u20A6" << eur_value << " NGN";
+                    cout << "\t Your \u20AC" << value << " has been converted to \u20A6" << euroToNaira(value) << " NGN";
                 }
-                // Conversion from Euro to Dollar
                 else if(eur_convert == 5){
-                    eur_value = value * 1.091643;
-                    cout << "\t Your \u20AC" << value << " has been converted to \uFF04" << eur_value << " USD";
+                    cout << "\t Your \u20AC" << value << " has been converted to \uFF04" << euroToDollar(value) << " USD";
                 }
                 break;
 
@@ -127,7 +110,7 @@ int main(){
                 cout << "\n\t What currency would you like to convert \uFFE1" << value << " to :";
                 cout << "\n\t\t1. Swiss Franc (CHF)";
                 cout << "\n\t\t2. European Euro (EUR)";
-                cout << "\n\t\t3. British Pound (GBP)";
+                cout << "\n\t\t3. British Pound Sterling (GBP)";
                 cout << "\n\t\t4. Nigerian Naira (NGN)";
                 cout << "\n\t\t5. US Dollar (USD)";
                 cout << "\n\t Input a number from 1-5 here and press enter: ";
@@ -137,29 +120,20 @@ int main(){
                     cout << "\t Please enter a valid number: ";
                     cin >> gbp_convert;
                 }
-                // Conversion from Pound to Franc
                 if(gbp_convert == 1){
-                    gbp_value = value * 1.1369;
-                    cout << "\t Your \uFFE1" << value << " has been converted to \u20A3" << gbp_value << " CHF";
+                    cout << "\t Your \uFFE1" << value << " has been converted to \u20A3" << poundToFranc(value) << " CHF";
                 }
-                // Conversion from Pound to Euro
                 else if(gbp_convert == 2){
-                    gbp_value = value * 1.163979;
-                    cout << "\t Your \uFFE1" << value << " has been converted to \u20AC" << gbp_value << " EUR";
+                    cout << "\t Your \uFFE1" << value << " has been converted to \u20AC" << poundToEuro(value) << " EUR";
                 }
-                // Conversion from Pound to Pound
                 else if(gbp_convert == 3){
                     cout << "\t You cannot convert this currency to itself!";
                 }
-                // Conversion from Pound to Naira
                 else if(gbp_convert == 4){
-                    gbp_value = value * 966.037051;
-                    cout << "\t Your \uFFE1" << value << " has been converted to \u20A6" << gbp_value << " NGN";
+                    cout << "\t Your \uFFE1" << value << " has been converted to \u20A6" << poundToNaira(value) << " NGN";
                 }
-                // Conversion from Pound to Dollar
                 else if(gbp_convert == 5){
-                    gbp_value = value / 1.27065;
-                    cout << "\t Your \uFFE1" << value << " has been converted to \uFF04" << gbp_value << " USD";
+                    cout << "\t Your \uFFE1" << value << " has been converted to \uFF04" << poundToDollar(value) << " USD";
                 }
                 break;
 
@@ -170,7 +144,7 @@ int main(){
                 cout << "\n\t What currency would you like to convert \u20A6" << value << " to :";
                 cout << "\n\t\t1. Swiss Franc (CHF)";
                 cout << "\n\t\t2. European Euro (EUR)";
-                cout << "\n\t\t3. British Pound (GBP)";
+                cout << "\n\t\t3. British Pound Sterling (GBP)";
                 cout << "\n\t\t4. Nigerian Naira (NGN)";
                 cout << "\n\t\t5. US Dollar (USD)";
                 cout << "\n\t Input a number from 1-5 here and press enter: ";
@@ -180,29 +154,20 @@ int main(){
                     cout << "\t Please enter a valid number: ";
                     cin >> ngn_convert;
                 }
-                // Conversion from Naira to Franc
                 if(ngn_convert == 1){
-                    ngn_value = value * 0.001177;
-                    cout << "\t Your \u20A6" << value << " has been converted to \u20A3" << ngn_value << " CHF";
+                    cout << "\t Your \u20A6" << value << " has been converted to \u20A3" << nairaToFranc(value) << " CHF";
                 }
-                // Conversion from Naira to Euro
                 else if(ngn_convert == 2){
-                    ngn_value = value * 0.001205;
-                    cout << "\t Your \u20A6" << value << " has been converted to \u20AC" << ngn_value << " EUR";
+                    cout << "\t Your \u20A6" << value << " has been converted to \u20AC" << nairaToEuro(value) << " EUR";
                 }
-                // Conversion from Naira to Pound
                 else if(ngn_convert == 3){
-                    ngn_value = value * 0.001035;
-                    cout << "\t Your \u20A6" << value << " has been converted to \uFFE1" << ngn_value << " GBP";
+                    cout << "\t Your \u20A6" << value << " has been converted to \uFFE1" << nairaToPound(value) << " GBP";
                 }
-                // Conversion from Naira to Naira
                 else if(ngn_convert == 4){
                     cout << "\t You cannot convert this currency to itself!";
                 }
-                // Conversion from Naira to Dollar
                 else if(ngn_convert == 5){
-                    ngn_value = value * 0.001315;
-                    cout << "\t Your \u20A6" << value << " has been converted to \uFF04" << ngn_value << " USD";
+                    cout << "\t Your \u20A6" << value << " has been converted to \uFF04" << nairaToDollar(value) << " USD";
                 }
                 break;
 
@@ -213,7 +178,7 @@ int main(){
                 cout << "\n\t What currency would you like to convert \uFF04" << value << " to :";
                 cout << "\n\t\t1. Swiss Franc (CHF)";
                 cout << "\n\t\t2. European Euro (EUR)";
-                cout << "\n\t\t3. British Pound (GBP)";
+                cout << "\n\t\t3. British Pound Sterling (GBP)";
                 cout << "\n\t\t4. Nigerian Naira (NGN)";
                 cout << "\n\t\t5. US Dollar (USD)";
                 cout << "\n\t Input a number from 1-5 here and press enter: ";
@@ -223,27 +188,18 @@ int main(){
                     cout << "\t Please enter a valid number: ";
                     cin >> usd_convert;
                 }
-                // Conversion from Dollar to Franc
                 if(usd_convert == 1){
-                    usd_value = value * 0.894739;
-                    cout << "\t Your \uFF04" << value << " has been converted to \u20A3" << usd_value << " CHF";
+                    cout << "\t Your \uFF04" << value << " has been converted to \u20A3" << dollarToFranc(value) << " CHF";
                 }
-                // Conversion from Dollar to Euro
                 else if(usd_convert == 2){
-                    usd_value = value * 0.915541;
-                    cout << "\t Your \uFF04" << value << " has been converted to \u20AC" << usd_value << " EUR";
+                    cout << "\t Your \uFF04" << value << " has been converted to \u20AC" << dollarToEuro(value) << " EUR";
                 }
-                // Conversion from Dollar to Pound
                 else if(usd_convert == 3){
-                    usd_value = value * 0.786999;
-                    cout << "\t Your \uFF04" << value << " has been converted to \uFFE1" << usd_value << " GBP";
+                    cout << "\t Your \uFF04" << value << " has been converted to \uFFE1" << dollarToPound(value) << " GBP";
                 }
-                // Conversion from Dollar to Naira
                 else if(usd_convert == 4){
-                    usd_value = value * 760.27;
-                    cout << "\t Your \uFF04" << value << " has been converted to \u20A6" << usd_value << " NGN";
+                    cout << "\t Your \uFF04" << value << " has been converted to \u20A6" << dollarToNaira(value) << " NGN";
                 }
-                // Conversion from Dollar to Dollar
                 else if(usd_convert == 5){
                     cout << "\t You cannot convert this currency to itself!";
                 }
