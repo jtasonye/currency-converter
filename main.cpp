@@ -6,6 +6,7 @@
 #include "converter.h"
 using std::cout;
 using std::cin;
+using std::endl;
 
 int main(){
     // Variable to hold the the user's input for starting currency
@@ -213,6 +214,11 @@ int main(){
 
         // Check if the user wants to continue or stop
         continue_conversion = (choice == 'Y' || choice == 'y');
+
+        // If the user wants to stop, display the following message
+        if(choice != 'Y' || choice != 'y'){
+            cout << "\n\t Thank you for using the conversion app today!" << endl;
+        }
     }
     return 0;
 }
