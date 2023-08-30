@@ -209,7 +209,7 @@ int main(){
 
         // Ask the user if they want to perform another conversion
         char choice;
-        cout << "\n\t Do you want to perform another converion? Input (Y for yes / N for no) and press enter: ";
+        cout << "\n\n\t Do you want to perform another converion? Input (Y for yes / N for no) and press enter: ";
         cin >> choice;
 
         // Check if the user wants to continue or stop
